@@ -1,16 +1,12 @@
-export default function Projects() {
-    const projects = [
-        {
-            title: "Portfolio Website",
-            description: "Personal portfolio built with Next.js and Tailwind CSS.",
-            tech: ["Next.js", "Tailwind CSS", "TypeScript"]
-        },
-        {
-            title: "Coming Soon",
-            description: "More exciting projects will be added here soon.",
-            tech: ["Future Tech"]
-        }
-    ];
+import { prisma } from "@/lib/prisma";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+
+export default async function Projects() {
+    const projects = await prisma.project.findMany({
+        where: { published: true },
+        orderBy: { createdAt: "asc" } // Keep them in insertion order for now
+    });
 
     return (
         <section
@@ -23,19 +19,33 @@ export default function Projects() {
                 </h2>
 
                 <div className="grid md:grid-cols-2 gap-8">
-                    {projects.map((project, idx) => (
-                        <div key={idx} className="glass glass-hover p-8 rounded-3xl transition-all duration-500 group">
-                            <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
-                            <p className="text-foreground/60 mb-6">{project.description}</p>
-                            <div className="flex flex-wrap gap-2">
-                                {project.tech.map((tech) => (
-                                    <span key={tech} className="px-3 py-1 bg-foreground/5 rounded-full text-xs font-medium text-foreground/70">
-                                        {tech}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
-                    ))}
+                    {projects.map((project) => {
+                        const techStack = JSON.parse(project.tech);
+                        return (
+                            <Link href={`/projects/${project.slug}`} key={project.id} className="block group">
+                                <div className="glass glass-hover p-8 rounded-3xl transition-all duration-500 h-full flex flex-col justify-between">
+                                    <div>
+                                        <h3 className="text-2xl font-bold mb-2 group-hover:text-indigo-500 transition-colors">
+                                            {project.title}
+                                        </h3>
+                                        <p className="text-foreground/60 mb-6 line-clamp-2">
+                                            {project.description}
+                                        </p>
+                                        <div className="flex flex-wrap gap-2 mb-6">
+                                            {techStack.map((tech: string) => (
+                                                <span key={tech} className="px-3 py-1 bg-foreground/5 rounded-full text-xs font-medium text-foreground/70">
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center text-sm font-bold text-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-[-10px] group-hover:translate-x-0">
+                                        Read Case Study <ArrowRight className="w-4 h-4 ml-1" />
+                                    </div>
+                                </div>
+                            </Link>
+                        );
+                    })}
                 </div>
             </div>
         </section>

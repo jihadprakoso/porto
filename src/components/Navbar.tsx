@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
@@ -15,10 +16,10 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "About", href: "#about" },
-    { name: "Projects", href: "#projects" },
-    { name: "Stack", href: "#stack" },
-    { name: "Contact", href: "#contact" },
+    { name: "About", href: "/#about" },
+    { name: "Projects", href: "/#projects" },
+    { name: "Stack", href: "/#stack" },
+    { name: "Blog", href: "/blog" },
   ];
 
   return (
@@ -30,19 +31,19 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-5xl mx-auto px-6 flex justify-between items-center">
-        <a href="#" className="text-xl font-bold tracking-tighter">
+        <Link href="/" className="text-xl font-bold tracking-tighter">
           JP<span className="text-indigo-500">.</span>
-        </a>
+        </Link>
 
         <div className="hidden md:flex gap-8 items-center">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
               className="text-sm font-medium text-foreground/60 hover:text-foreground transition-colors"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
           <ThemeToggle />
         </div>
