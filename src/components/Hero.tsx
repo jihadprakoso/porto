@@ -6,24 +6,23 @@ export default function Hero() {
           Jihad <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-400">Prakoso</span>
         </h1>
 
-        <p className="text-xl md:text-2xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-          I build fast, scalable, and user-focused web applications 
-          using modern technologies and minimalist design.
+        <p className="text-xl md:text-2xl text-foreground/60 mb-10 max-w-2xl mx-auto leading-relaxed">
+          I engineer robust full-stack products, seamlessly integrating scalable backend architectures with premium, high-performance web interfaces.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a
             href="#projects"
-            className="w-full sm:w-auto px-8 py-4 bg-white text-black rounded-full font-bold hover:bg-gray-200 transition-all active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+            className="w-full sm:w-auto px-8 py-4 bg-foreground text-background rounded-full font-bold hover:opacity-90 transition-all active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.1)]"
           >
-            View Projects
+            Explore Products
           </a>
 
           <a
             href="#contact"
-            className="w-full sm:w-auto px-8 py-4 glass border-white/10 rounded-full font-bold hover:bg-white/10 transition-all active:scale-95"
+            className="w-full sm:w-auto px-8 py-4 glass border-white/10 rounded-full font-bold hover:bg-foreground/5 transition-all active:scale-95"
           >
-            Contact Me
+            Get in Touch
           </a>
         </div>
       </div>
