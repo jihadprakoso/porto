@@ -1,3 +1,15 @@
+@property --radial-start {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f8fafc;
+}
+
+@property --radial-end {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ffffff;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -25,11 +37,20 @@
 }
 
 body {
+  background-color: var(--background) !important;
   color: var(--foreground);
-  background: radial-gradient(circle at 50% 0%, var(--radial-start) 0%, var(--radial-end) 70%);
+  background-image: radial-gradient(circle at 50% 0%, var(--radial-start) 0%, var(--radial-end) 70%);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   overflow-x: hidden;
-  transition: background 0.5s ease;
+  transition: --radial-start 0.8s ease, --radial-end 0.8s ease, color 0.5s ease, background-color 0.8s ease;
+}
+
+.dark body {
+  background-color: var(--background) !important;
+}
+
+*, *::before, *::after {
+  transition: background-color 0.5s ease, border-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
 }
 
 html {
@@ -60,6 +81,7 @@ html {
   background-image: linear-gradient(var(--grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid) 1px, transparent 1px);
   background-size: 50px 50px;
+  transition: background-color 0.8s ease;
 }
 
 /* Animations */
@@ -72,9 +94,4 @@ html {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.animate-reveal {
-  opacity: 0;
-  animation: fadeInUp 0.8s ease-out forwards;
 }

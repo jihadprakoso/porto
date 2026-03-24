@@ -14,9 +14,12 @@ export default function BlogForm({ post }: { post?: any }) {
   
   const [formData, setFormData] = useState({
     title: post?.title || "",
+    titleId: post?.titleId || "",
     slug: post?.slug || "",
     excerpt: post?.excerpt || "",
+    excerptId: post?.excerptId || "",
     content: post?.content || "",
+    contentId: post?.contentId || "",
     published: post?.published ?? true,
   });
 
@@ -75,7 +78,7 @@ export default function BlogForm({ post }: { post?: any }) {
         <div className="glass p-8 rounded-3xl space-y-6">
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-medium text-foreground/70 mb-2">Title</label>
+              <label className="block text-sm font-medium text-foreground/70 mb-2">Title (EN)</label>
               <input
                 type="text"
                 required
@@ -86,43 +89,75 @@ export default function BlogForm({ post }: { post?: any }) {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-foreground/70 mb-2">Slug</label>
+              <label className="block text-sm font-medium text-foreground/70 mb-2">Title (ID)</label>
               <input
                 type="text"
-                required
-                value={formData.slug}
-                onChange={e => setFormData({ ...formData, slug: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl bg-background border border-foreground/10 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all text-sm font-mono"
-                placeholder="post-title"
+                value={formData.titleId}
+                onChange={e => setFormData({ ...formData, titleId: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl bg-background border border-foreground/10 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all font-medium"
+                placeholder="Judul Postingan"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-foreground/70 mb-2">Excerpt</label>
-            <textarea
+            <label className="block text-sm font-medium text-foreground/70 mb-2">Slug</label>
+            <input
+              type="text"
               required
-              rows={2}
-              value={formData.excerpt}
-              onChange={e => setFormData({ ...formData, excerpt: e.target.value })}
-              className="w-full px-4 py-3 rounded-xl bg-background border border-foreground/10 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all"
-              placeholder="A brief summary for the blog card"
+              value={formData.slug}
+              onChange={e => setFormData({ ...formData, slug: e.target.value })}
+              className="w-full px-4 py-3 rounded-xl bg-background border border-foreground/10 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all text-sm font-mono"
+              placeholder="post-title"
             />
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-foreground/70 mb-2 flex justify-between">
-              <span>Content (Markdown)</span>
-              <a href="https://www.markdownguide.org/cheat-sheet/" target="_blank" rel="noreferrer" className="text-indigo-400 hover:underline">Markdown Guide</a>
-            </label>
-            <textarea
-              required
-              rows={16}
-              value={formData.content}
-              onChange={e => setFormData({ ...formData, content: e.target.value })}
-              className="w-full px-4 py-3 rounded-xl bg-background border border-foreground/10 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all font-mono text-sm leading-relaxed"
-              placeholder="# Post Title&#10;&#10;Write your post content here..."
-            />
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-medium text-foreground/70 mb-2">Excerpt (EN)</label>
+              <textarea
+                required
+                rows={2}
+                value={formData.excerpt}
+                onChange={e => setFormData({ ...formData, excerpt: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl bg-background border border-foreground/10 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all"
+                placeholder="A brief summary..."
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-foreground/70 mb-2">Excerpt (ID)</label>
+              <textarea
+                rows={2}
+                value={formData.excerptId}
+                onChange={e => setFormData({ ...formData, excerptId: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl bg-background border border-foreground/10 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all"
+                placeholder="Ringkasan singkat..."
+              />
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-medium text-foreground/70 mb-2">Content (EN)</label>
+              <textarea
+                required
+                rows={16}
+                value={formData.content}
+                onChange={e => setFormData({ ...formData, content: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl bg-background border border-foreground/10 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all font-mono text-sm leading-relaxed"
+                placeholder="# Post Title&#10;&#10;Write your post content here..."
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-foreground/70 mb-2">Content (ID)</label>
+              <textarea
+                rows={16}
+                value={formData.contentId}
+                onChange={e => setFormData({ ...formData, contentId: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl bg-background border border-foreground/10 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all font-mono text-sm leading-relaxed"
+                placeholder="# Judul Postingan&#10;&#10;Tulis konten disini..."
+              />
+            </div>
           </div>
           
           <div className="flex items-center pt-4 border-t border-foreground/10">

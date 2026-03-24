@@ -25,15 +25,19 @@ export const metadata: Metadata = {
 };
 
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { TransitionProvider } from "@/components/TransitionProvider";
+import { getLocale } from "@/lib/i18n";
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+
   return (
     <html
-      lang="en"
+      lang={locale}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
@@ -42,9 +46,10 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="dark"
           enableSystem
-          disableTransitionOnChange
         >
-          {children}
+          <TransitionProvider locale={locale}>
+            {children}
+          </TransitionProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -1,0 +1,36 @@
+{
+  "nav": {
+    "about": "About",
+    "projects": "Projects",
+    "stack": "Stack",
+    "blog": "Blog",
+    "dashboard": "Dashboard",
+    "contact": "Work With Me"
+  },
+  "hero": {
+    "name": "Jihad",
+    "surname": "Prakoso",
+    "subtitle": "I engineer robust full-stack products, seamlessly integrating scalable backend architectures with premium, high-performance web interfaces.",
+    "explore": "Explore Projects",
+    "contact": "Get in Touch"
+  },
+  "about": {
+    "titlePrefix": "About",
+    "titleHighlight": "Me",
+    "description": "I am a full-stack developer dedicated to building end-to-end digital experiences. I specialize in Next.js, Prisma, and modern UI design, empowering me to deliver fully-featured web applications—from robust database architectures to stunning, high-performance interfaces."
+  },
+  "tech": {
+    "titlePrefix": "Tech",
+    "titleHighlight": "Stack",
+    "items": [
+      "Next.js App Router", "TypeScript", "Tailwind CSS", "Prisma ORM",
+      "NextAuth.js", "SQLite / PostgreSQL", "React Server Components", "RESTful APIs"
+    ]
+  },
+  "contact": {
+    "titlePrefix": "Let’s",
+    "titleHighlight": "Build Something Great",
+    "desc": "Whether you need a high-performance web application, a custom CMS, or a scalable product architecture, I'm ready to turn your vision into reality.",
+    "email": "Email Me"
+  }
+}

@@ -3,8 +3,9 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
+import LanguageToggle from "./LanguageToggle";
 
-export default function Navbar() {
+export default function Navbar({ dict, currentLocale }: { dict: any, currentLocale: 'en' | 'id' }) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -16,11 +17,11 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "About", href: "/#about" },
-    { name: "Projects", href: "/#projects" },
-    { name: "Stack", href: "/#stack" },
-    { name: "Blog", href: "/blog" },
-    { name: "Dashboard", href: "/dashboard" },
+    { name: dict.about, href: "/#about" },
+    { name: dict.projects, href: "/#projects" },
+    { name: dict.stack, href: "/#stack" },
+    { name: dict.blog, href: "/blog" },
+    { name: dict.dashboard, href: "/dashboard" },
   ];
 
   return (
@@ -46,18 +47,22 @@ export default function Navbar() {
               {link.name}
             </Link>
           ))}
-          <ThemeToggle />
+          <div className="flex items-center gap-2">
+            <LanguageToggle currentLocale={currentLocale} />
+            <ThemeToggle />
+          </div>
         </div>
 
         <div className="flex items-center gap-4">
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-2">
+            <LanguageToggle currentLocale={currentLocale} />
             <ThemeToggle />
           </div>
           <a
             href="#contact"
             className="px-4 py-2 bg-foreground text-background text-sm font-bold rounded-full hover:opacity-90 transition-all active:scale-95"
           >
-            Work With Me
+            {dict.contact}
           </a>
         </div>
       </div>

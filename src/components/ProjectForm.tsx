@@ -14,9 +14,12 @@ export default function ProjectForm({ project }: { project?: any }) {
   
   const [formData, setFormData] = useState({
     title: project?.title || "",
+    titleId: project?.titleId || "",
     slug: project?.slug || "",
     description: project?.description || "",
+    descriptionId: project?.descriptionId || "",
     content: project?.content || "",
+    contentId: project?.contentId || "",
     tech: project?.tech ? JSON.parse(project.tech).join(", ") : "",
     liveUrl: project?.liveUrl || "",
     githubUrl: project?.githubUrl || "",
@@ -83,7 +86,7 @@ export default function ProjectForm({ project }: { project?: any }) {
         <div className="glass p-8 rounded-3xl space-y-6">
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-medium text-foreground/70 mb-2">Title</label>
+              <label className="block text-sm font-medium text-foreground/70 mb-2">Title (EN)</label>
               <input
                 type="text"
                 required
@@ -94,43 +97,75 @@ export default function ProjectForm({ project }: { project?: any }) {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-foreground/70 mb-2">Slug</label>
+              <label className="block text-sm font-medium text-foreground/70 mb-2">Title (ID)</label>
               <input
                 type="text"
+                value={formData.titleId}
+                onChange={e => setFormData({ ...formData, titleId: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl bg-background border border-foreground/10 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all font-medium"
+                placeholder="Judul Proyek"
+              />
+            </div>
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-foreground/70 mb-2">Slug</label>
+            <input
+              type="text"
+              required
+              value={formData.slug}
+              onChange={e => setFormData({ ...formData, slug: e.target.value })}
+              className="w-full px-4 py-3 rounded-xl bg-background border border-foreground/10 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all text-sm font-mono"
+              placeholder="project-slug-here"
+            />
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-medium text-foreground/70 mb-2">Description (EN)</label>
+              <textarea
                 required
-                value={formData.slug}
-                onChange={e => setFormData({ ...formData, slug: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl bg-background border border-foreground/10 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all text-sm font-mono"
-                placeholder="project-title"
+                rows={3}
+                value={formData.description}
+                onChange={e => setFormData({ ...formData, description: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl bg-background border border-foreground/10 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all font-medium"
+                placeholder="A brief overview..."
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-foreground/70 mb-2">Description (ID)</label>
+              <textarea
+                rows={3}
+                value={formData.descriptionId}
+                onChange={e => setFormData({ ...formData, descriptionId: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl bg-background border border-foreground/10 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all font-medium"
+                placeholder="Gambaran singkat..."
               />
             </div>
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-foreground/70 mb-2">Short Description</label>
-            <textarea
-              required
-              rows={2}
-              value={formData.description}
-              onChange={e => setFormData({ ...formData, description: e.target.value })}
-              className="w-full px-4 py-3 rounded-xl bg-background border border-foreground/10 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all"
-              placeholder="A brief overview for the project card"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-foreground/70 mb-2 flex justify-between">
-              <span>Case Study Content (Markdown)</span>
-              <a href="https://www.markdownguide.org/cheat-sheet/" target="_blank" rel="noreferrer" className="text-indigo-400 hover:underline">Markdown Guide</a>
-            </label>
-            <textarea
-              required
-              rows={12}
-              value={formData.content}
-              onChange={e => setFormData({ ...formData, content: e.target.value })}
-              className="w-full px-4 py-3 rounded-xl bg-background border border-foreground/10 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all font-mono text-sm leading-relaxed"
-              placeholder="# Project Name&#10;&#10;## Overview&#10;..."
-            />
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-medium text-foreground/70 mb-2">Content (EN) - Markdown</label>
+              <textarea
+                required
+                rows={12}
+                value={formData.content}
+                onChange={e => setFormData({ ...formData, content: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl bg-background border border-foreground/10 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all font-mono text-xs"
+                placeholder="# Project..."
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-foreground/70 mb-2">Content (ID) - Markdown</label>
+              <textarea
+                rows={12}
+                value={formData.contentId}
+                onChange={e => setFormData({ ...formData, contentId: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl bg-background border border-foreground/10 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all font-mono text-xs"
+                placeholder="# Proyek..."
+              />
+            </div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">

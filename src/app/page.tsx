@@ -3,12 +3,12 @@ import Projects from "@/components/Projects";
 import About from "@/components/About";
 import TechStack from "@/components/TechStack";
 import Contact from "@/components/Contact";
-import Navbar from "@/components/Navbar";
+import NavbarWrapper from "@/components/NavbarWrapper";
 
 export default function Home() {
   return (
     <div className="bg-grid min-h-screen">
-      <Navbar />
+      <NavbarWrapper />
       <main>
         <Hero />
         <Projects />

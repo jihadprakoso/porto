@@ -4,7 +4,8 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { ArrowLeft, ExternalLink, Code } from "lucide-react";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
+import NavbarWrapper from "@/components/NavbarWrapper";
+import { getLocale } from "@/lib/i18n";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
@@ -22,6 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
+  const locale = await getLocale();
   const project = await prisma.project.findUnique({
     where: { slug: resolvedParams.slug },
   });
@@ -29,10 +31,14 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   if (!project) notFound();
 
   const techStack = JSON.parse(project.tech);
+  
+  const displayTitle = locale === 'id' && project.titleId ? project.titleId : project.title;
+  const displayDesc = locale === 'id' && project.descriptionId ? project.descriptionId : project.description;
+  const displayContent = locale === 'id' && project.contentId ? project.contentId : project.content;
 
   return (
     <div className="bg-grid min-h-screen">
-      <Navbar />
+      <NavbarWrapper />
       
       <main className="pt-32 pb-24 px-6 max-w-4xl mx-auto animate-reveal">
         <Link 
@@ -40,16 +46,16 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           className="inline-flex items-center text-sm font-medium text-foreground/60 hover:text-indigo-500 transition-colors mb-8"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to Projects
+          {locale === 'id' ? 'Kembali ke Proyek' : 'Back to Projects'}
         </Link>
         
         <div className="glass p-8 md:p-12 rounded-3xl mb-12">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-            {project.title}
+            {displayTitle}
           </h1>
           
           <p className="text-xl text-foreground/70 leading-relaxed mb-8">
-            {project.description}
+            {displayDesc}
           </p>
           
           <div className="flex flex-wrap gap-3 mb-8">
@@ -72,7 +78,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 className="inline-flex items-center px-6 py-3 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-500 transition-all active:scale-95"
               >
                 <ExternalLink className="w-4 h-4 mr-2" />
-                Live Demo
+                {locale === 'id' ? 'Demo Langsung' : 'Live Demo'}
               </a>
             )}
             
@@ -84,7 +90,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 className="inline-flex items-center px-6 py-3 bg-foreground/10 text-foreground rounded-xl font-bold hover:bg-foreground/20 transition-all active:scale-95"
               >
                 <Code className="w-4 h-4 mr-2" />
-                Source Code
+                {locale === 'id' ? 'Kode Sumber' : 'Source Code'}
               </a>
             )}
           </div>
@@ -92,7 +98,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         
         <div className="prose prose-invert prose-lg max-w-none prose-headings:text-foreground prose-a:text-indigo-400 prose-strong:text-foreground">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>
-            {project.content}
+            {displayContent}
           </ReactMarkdown>
         </div>
       </main>

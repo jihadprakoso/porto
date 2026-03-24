@@ -20,9 +20,12 @@ model User {
 model Project {
   id          String   @id @default(cuid())
   title       String
+  titleId     String?
   slug        String   @unique
   description String
+  descriptionId String?
   content     String   @default("")
+  contentId   String?
   tech        String   // JSON array stored as string
   liveUrl     String?
   githubUrl   String?
@@ -35,9 +38,12 @@ model Project {
 model BlogPost {
   id        String   @id @default(cuid())
   title     String
+  titleId   String?
   slug      String   @unique
   excerpt   String
+  excerptId String?
   content   String
+  contentId String?
   published Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

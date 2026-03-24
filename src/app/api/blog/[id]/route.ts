@@ -32,9 +32,12 @@ export async function PUT(
       where: { id: resolvedParams.id },
       data: {
         title: data.title,
+        titleId: data.titleId,
         slug: data.slug,
         excerpt: data.excerpt,
+        excerptId: data.excerptId,
         content: data.content,
+        contentId: data.contentId,
         published: data.published,
       },
     });

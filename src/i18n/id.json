@@ -1,0 +1,36 @@
+{
+  "nav": {
+    "about": "Tentang",
+    "projects": "Proyek",
+    "stack": "Stack",
+    "blog": "Blog",
+    "dashboard": "Dasbor",
+    "contact": "Hubungi Saya"
+  },
+  "hero": {
+    "name": "Jihad",
+    "surname": "Prakoso",
+    "subtitle": "Saya merancang produk full-stack yang andal, memadukan arsitektur backend yang scalable dengan antarmuka web premium berkinerja tinggi.",
+    "explore": "Lihat Proyek",
+    "contact": "Hubungi Saya"
+  },
+  "about": {
+    "titlePrefix": "Tentang",
+    "titleHighlight": "Saya",
+    "description": "Saya adalah seorang full-stack developer yang berfokus membangun pengalaman digital end-to-end. Spesialisasi saya meliputi Next.js, Prisma, dan desain UI modern, memungkinkan saya untuk membuat aplikasi web yang sepenuhnya fungsional—dari arsitektur database yang kokoh hingga antarmuka yang sangat optimal dan menawan."
+  },
+  "tech": {
+    "titlePrefix": "Tech",
+    "titleHighlight": "Stack",
+    "items": [
+      "Next.js App Router", "TypeScript", "Tailwind CSS", "Prisma ORM",
+      "NextAuth.js", "SQLite / PostgreSQL", "React Server Components", "RESTful APIs"
+    ]
+  },
+  "contact": {
+    "titlePrefix": "Mari",
+    "titleHighlight": "Bangun Sesuatu yang Hebat",
+    "desc": "Apakah Anda membutuhkan aplikasi web dengan performa tinggi, CMS kustom, atau arsitektur produk yang scalable, saya siap mewujudkan visi Anda menjadi kenyataan.",
+    "email": "Email Saya"
+  }
+}
