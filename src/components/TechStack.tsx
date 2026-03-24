@@ -1,7 +1,7 @@
 export default function TechStack() {
     const stack = [
-        "Next.js", "React", "Tailwind CSS", "TypeScript",
-        "Git", "Figma", "Node.js (Learning)", "Backend System (WIP)"
+        "Next.js App Router", "TypeScript", "Tailwind CSS", "Prisma ORM",
+        "NextAuth.js", "SQLite / PostgreSQL", "React Server Components", "RESTful APIs"
     ];
 
     return (
