@@ -3,12 +3,12 @@ export default function Contact() {
         <section id="contact" className="px-6 py-32 border-t border-foreground/5 bg-foreground/[0.02]">
             <div className="max-w-3xl mx-auto text-center animate-reveal">
                 <h2 className="text-4xl font-bold mb-6 tracking-tight">
-                    Let’s <span className="text-indigo-400">Work Together</span>
+                    Let’s <span className="text-indigo-400">Build Something Great</span>
                 </h2>
 
                 <p className="text-xl text-foreground/60 mb-12 leading-relaxed">
-                    Interested in working together or have a project in mind?
-                    Feel free to reach out.
+                    Whether you need a high-performance web application, a custom CMS, 
+                    or a scalable product architecture, I'm ready to turn your vision into reality.
                 </p>
 
                 <div className="flex flex-wrap gap-4 justify-center">
