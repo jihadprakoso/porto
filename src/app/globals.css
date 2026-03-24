@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+  --accent: #6366f1;
+  --grid: rgba(0, 0, 0, 0.03);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.05);
+  --radial-start: #f8fafc;
+  --radial-end: #ffffff;
+}
+
+.dark {
+  --background: #000000;
+  --foreground: #ffffff;
+  --accent: #6366f1;
+  --grid: rgba(255, 255, 255, 0.03);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --radial-start: #0d0d1a;
+  --radial-end: #000000;
+}
+
+body {
+  color: var(--foreground);
+  background: radial-gradient(circle at 50% 0%, var(--radial-start) 0%, var(--radial-end) 70%);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  transition: background 0.5s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-hover:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.1);
+}
+
+.dark .glass-hover:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Background patterns */
+.bg-grid {
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-reveal {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
