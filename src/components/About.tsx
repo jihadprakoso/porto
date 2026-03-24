@@ -7,10 +7,9 @@ export default function About() {
                 </h2>
 
                 <p className="text-xl text-foreground/70 leading-relaxed text-center">
-                    I’m a frontend developer focused on building
-                    high-performance web interfaces. Currently working with modern 
-                    technologies like <span className="text-foreground font-medium">Next.js and Tailwind CSS</span>, 
-                    and continuously expanding my skills toward fullstack development.
+                    I am a full-stack developer dedicated to building end-to-end digital experiences. 
+                    I specialize in <span className="text-foreground font-medium">Next.js, Prisma, and modern UI design</span>, 
+                    empowering me to deliver fully-featured web applications—from robust database architectures to stunning, high-performance interfaces.
                 </p>
             </div>
         </section>
