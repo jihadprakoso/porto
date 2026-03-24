@@ -5,6 +5,8 @@ import TechStack from "@/components/TechStack";
 import Contact from "@/components/Contact";
 import NavbarWrapper from "@/components/NavbarWrapper";
 
+export const dynamic = "force-dynamic";
+
 export default function Home() {
   return (
     <div className="bg-grid min-h-screen">
