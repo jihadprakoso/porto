@@ -13,12 +13,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Jihad Prakoso | Frontend Developer & UI Designer",
-  description: "Explore the portfolio of Jihad Prakoso, a frontend developer specializing in modern, scalable, and high-performance web applications using Next.js and Tailwind CSS.",
-  keywords: ["Jihad Prakoso", "Frontend Developer", "Next.js", "React", "Portfolio", "Web Design"],
+  title: "Jihad Prakoso | Full-stack Developer & Product Builder",
+  description: "Jihad Prakoso is a full-stack developer building end-to-end scalable products, custom CMS architectures, and premium web experiences using Next.js, Prisma, and Tailwind CSS.",
+  keywords: ["Jihad Prakoso", "Full-stack Developer", "Frontend Developer", "Next.js", "Prisma", "Product Builder", "React"],
   openGraph: {
-    title: "Jihad Prakoso | Frontend Developer",
-    description: "Modern and scalable web experiences built with Next.js.",
+    title: "Jihad Prakoso | Full-stack Developer",
+    description: "Building scalable backend architectures and premium high-performance web interfaces.",
     type: "website",
     locale: "en_US",
   },
