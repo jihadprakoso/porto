@@ -1,6 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+
+export { AnimatePresence };
 
 export const MotionDiv = motion.div;
 export const MotionSection = motion.section;
