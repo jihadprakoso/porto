@@ -1,20 +1,15 @@
-import { auth } from "@/lib/auth";
+import NextAuth from "next-auth";
+import { authConfig } from "./auth.config";
 import { createClient } from "@/utils/supabase/middleware";
+
+const { auth } = NextAuth(authConfig);
 
 export default auth(async (req) => {
   // Sync Supabase session
   const supabaseResponse = createClient(req);
-  
-  const isLoggedIn = !!req.auth;
-  const isOnDashboard = req.nextUrl.pathname.startsWith("/dashboard");
-
-  if (isOnDashboard && !isLoggedIn) {
-     return Response.redirect(new URL("/login", req.nextUrl));
-  }
-
   return supabaseResponse;
 });
 
 export const config = {
-  matcher: ["/dashboard/:path*"],
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
 };
